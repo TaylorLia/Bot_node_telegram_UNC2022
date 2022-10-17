@@ -1,29 +1,25 @@
-// importando as variaveis de ambiente
-const env = require('../.env');
+// acessando o arquivo que contém o 'token' para a api do Telegram
+const env = require('../.env')
 
-// importando a bilblioteca telegraf
-const {Telegraf} = require('telegraf');
+// importando a biblioteca do 'Telegraph'
+const { Telegraf } = require('telegraf')
 
-/**
- * criando o objeto 'bot' e o intanciando como um novo objeto da classe 'telegraf'
- **/
-const bot = new Telegraf(env.token);
+// criando o objeto 'bot' e instanciando como um novo objeto da classe 'Telegraf'
+const bot = new Telegraf(env.token)
 
-// iniciando o 'bot'
+// iniciando o bot
 bot.start(ctx => {
-    const from = ctx.update.message.from
-    if (from.username === 'Lialltai'){
-        ctx.reply(`Olá! Seja bem vindo ${from.first_name}!`)
+  const from = ctx.update.message.from
+  if (from.id != '1351450134') {
+    //console.log(from.id)
+    ctx.reply(
+      `Cai fora ${from.first_name} ${from.last_name}! Só falo com meu mestre!!`
+    )
+  } else {
+    //console.log(from.id)
+    ctx.reply(`Seja bem vindo meu Mestre! Senti sua falta!`)
+  }
+})
 
-        bot.on('text', async(ctx, next) =>{
-            await ctx.reply(`Resposta 1`)
-            next();
-        })
-    }
-    
-});
-
-//dando continuidade a conversa 
-
-
+// iniciando o 'polling' com o servidor para verificar se há novas mensagens na conversa
 bot.startPolling()
