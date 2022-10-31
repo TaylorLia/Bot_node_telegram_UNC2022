@@ -10,7 +10,7 @@ const bot = new Telegraf(env.token)
 // iniciando o bot
 bot.start(ctx => {
   const from = ctx.update.message.from
-  if (from.id != '1351450134') {
+  if (from.id != '1373064778') {
     //console.log(from.id)
     ctx.reply(
       `Cai fora ${from.first_name} ${from.last_name}! Só falo com meu mestre!!`
